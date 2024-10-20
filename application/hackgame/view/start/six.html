@@ -1,0 +1,19 @@
+{include file="start/include/header" title="第6关" /}
+
+<body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
+    <div class="app">
+        <h1 class="title">第6关</h1>
+        <p class="message">Flag已经给你了，看不看得到看你的本事了</p>
+        <div class="content">
+            <form method="post">
+                <span>Flag：</span>
+                <span><input name="flag" type="text" /></span>
+                <span><button>提交</button></span>
+                <p style="color: red;">{$msg}</p>
+            </form>
+        </div>
+    </div>
+    <script src="{$Think.MY_ROOT_URL}/public/static/hackgame/start/hg/five.js"></script>
+</body>
+
+{include file="start/include/footer" /}
