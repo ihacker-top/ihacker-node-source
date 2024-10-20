@@ -22,7 +22,7 @@ define('MY_DEBUG', true);
 define('MY_ROOT_DIR', __DIR__);
 
 // 定义资源访问根目录
-define('MY_ROOT_URL', MY_DEBUG ? '/hackgame' : '');
+define('MY_ROOT_URL', MY_DEBUG ? '/ihacker-node-source' : '');
 
 // 加载基础文件
 require __DIR__ . '/thinkphp/base.php';
