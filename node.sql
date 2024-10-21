@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 127.0.0.1
+ Source Server         : localhost
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : 127.0.0.1:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 21/10/2024 19:17:06
+ Date: 22/10/2024 02:11:56
 */
 
 SET NAMES utf8mb4;
@@ -68,12 +68,35 @@ CREATE TABLE `hg_user`  (
   `user_id` int(11) NULL DEFAULT NULL,
   `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of hg_user
 -- ----------------------------
 INSERT INTO `hg_user` VALUES (1, 1, '123456');
+
+-- ----------------------------
+-- Table structure for m_captcha
+-- ----------------------------
+DROP TABLE IF EXISTS `m_captcha`;
+CREATE TABLE `m_captcha`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `code` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 62 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of m_captcha
+-- ----------------------------
+INSERT INTO `m_captcha` VALUES (56, 'ihacker.top@hotmail.com', '797810', '0', '2024-10-22 01:47:54');
+INSERT INTO `m_captcha` VALUES (57, 'ihacker.top@hotmail.com', '102146', '0', '2024-10-22 01:58:48');
+INSERT INTO `m_captcha` VALUES (58, 'ihacker.top@hotmail.com', '800279', '0', '2024-10-22 02:00:26');
+INSERT INTO `m_captcha` VALUES (59, 'ihacker.top@hotmail.com', '931983', '0', '2024-10-22 02:01:38');
+INSERT INTO `m_captcha` VALUES (60, 'ihacker.top@hotmail.com', '360864', '0', '2024-10-22 02:06:11');
+INSERT INTO `m_captcha` VALUES (61, 'ihacker.top@hotmail.com', '608296', '0', '2024-10-22 02:09:53');
 
 -- ----------------------------
 -- Table structure for m_user

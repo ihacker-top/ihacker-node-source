@@ -24,12 +24,12 @@ class Mail {
         $this->nickname = 'Security Node Team';
     }
 
-    public function send ($title, $body, $toMail, $toNickname) {
+    public function send ($title, $body, $toMail, $toNickname = '') {
 
         try {
 
             $mail = new PHPMailer(true);
-            $mail->SMTPDebug  = SMTP::DEBUG_SERVER;
+            // $mail->SMTPDebug  = SMTP::DEBUG_SERVER;
             $mail->isSMTP();
             $mail->CharSet = 'UTF-8';
             $mail->Host = $this->host;

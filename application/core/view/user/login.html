@@ -1,0 +1,79 @@
+{include file="include/header" title="登录 or  注册" /}
+<style type="text/css">
+    .app>.from {
+        position: relative;
+        left: calc(50% - 175px);
+        width: 350px;
+    }
+    .app p:nth-child(4) {
+        text-align: center;
+    }
+    .app p:nth-child(4) input {
+        width: 200px;
+    }
+    .msg {
+        text-align: center;
+        font-size: 16px;
+    }
+</style>
+<body>
+    <div class="app">
+        <h1 class="title">登录 or  注册</h1>
+        <div class="from">
+            <from>
+                <p><span>邮　箱：</span><span><input type="text" name="email" /></span></p>
+                <p>
+                    <span>验证码：</span><!--
+                    --><span><input type="text" name="code" /></span>&nbsp;<!--
+                    --><span><span><input type="button" name="sendcode" value="发送" />
+                </p>
+                <p class="msg"></p>
+                <p><span><input type="button" name="submit" value="登录 / 注册" /></p>
+            </from>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $sendUrl = '{:url("core/user/sendCode","","json")}';
+    $loginUrl = '{:url("core/user/gotoLogin","","json")}';
+    $(function () {
+        $('input[name="submit"]').click(function () {
+            var email = $('input[name="email"]').val();
+            var code = $('input[name="code"]').val();
+            $.post($loginUrl, {email: email, code: code}, function (e) {
+                if (e.code === 0) {
+                    $('.msg').html(e.message);
+                }else {
+                    $('.msg').html(e.message);
+                }
+            });
+        });
+        $('input[name="sendcode"]').click(function () {
+            $('.msg').html('');
+            $('input[name="sendcode"]').attr('disabled', 'disabled');
+            $('input[name="sendcode"]').val('发送中……');
+            var email = $('input[name="email"]').val();
+            $.post($sendUrl, {email: email}, function (e) {
+                if (e.code == 0 || e.code == 1) {
+                    var time = e.time ? e.time : 60;
+                    var timer = setInterval(function () {
+                        time -= 1;
+                        if (time >= 1) {
+                            $('input[name="sendcode"]').val('发送（' + time + '）');
+                        }else {
+                            $('input[name="sendcode"]').val('发送');
+                            $('input[name="sendcode"]').removeAttr('disabled');
+                            clearInterval(timer);
+                        }
+                    }, 1000);
+                    $('.msg').html(e.message);
+                }else {
+                    $('input[name="sendcode"]').val('发送');
+                    $('input[name="sendcode"]').removeAttr('disabled');
+                    $('.msg').html(e.message);
+                }
+            });
+        });
+    });
+</script>
+{include file="include/footer" /}
