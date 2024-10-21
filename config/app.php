@@ -137,7 +137,7 @@ return [
     'exception_tmpl'         => MY_DEBUG ? Env::get('think_path') . 'tpl/think_exception.tpl' : Env::get('app_path') . 'common/view/error/500.html',
 
     //TODO 自定义异常请求码的页面配置 建议只做非500错误页面
-    'http_exception_template'         => [
+    'http_exception_template'=> [
         404 =>  Env::get('app_path') . 'common/view/error/404.html',
     ],
 
