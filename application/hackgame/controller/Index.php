@@ -5,7 +5,7 @@ class Index {
 
     public function index () {
 
-        header('Location: /hackgame/start/first.html');
+        header('Location: ' . url('hackgame/start/first'));
         exit;
     }
 

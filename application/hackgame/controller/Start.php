@@ -2,24 +2,18 @@
 
 namespace app\hackgame\controller;
 
-use think\facade\Request;
-
 class Start extends GameCommon {
-
-    private $level = 3;
 
     public function __construct () {
         parent::__construct();
-        echo Request::action();
     }
 
     public function index () {
-        header('Location: /hackgame/start/first.html');
+        header('Location: ' . url('hackgame/start/first'));
         exit;
     }
 
     public function first () {
-        print_r($this->userInfo);
         return $this->fetch();
     }
 

@@ -11,11 +11,32 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 21/10/2024 13:13:20
+ Date: 21/10/2024 19:17:06
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for hg_level
+-- ----------------------------
+DROP TABLE IF EXISTS `hg_level`;
+CREATE TABLE `hg_level`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `level` int(3) NULL DEFAULT NULL,
+  `start_time` datetime NULL DEFAULT NULL,
+  `end_time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of hg_level
+-- ----------------------------
+INSERT INTO `hg_level` VALUES (1, 1, 3, '2024-10-21 17:44:18', '2024-10-22 17:44:22');
+INSERT INTO `hg_level` VALUES (2, 1, 2, '2024-10-21 17:44:18', '2024-10-22 17:44:22');
+INSERT INTO `hg_level` VALUES (3, 1, 1, '2024-10-21 17:44:18', '2024-10-22 17:44:22');
+INSERT INTO `hg_level` VALUES (4, 2, 1, '2024-10-21 17:44:18', '2024-10-22 17:44:22');
 
 -- ----------------------------
 -- Table structure for hg_page
@@ -39,21 +60,20 @@ INSERT INTO `hg_page` VALUES (5, 5, 'five');
 INSERT INTO `hg_page` VALUES (6, 6, 'six');
 
 -- ----------------------------
--- Table structure for hg_user_level
+-- Table structure for hg_user
 -- ----------------------------
-DROP TABLE IF EXISTS `hg_user_level`;
-CREATE TABLE `hg_user_level`  (
+DROP TABLE IF EXISTS `hg_user`;
+CREATE TABLE `hg_user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NULL DEFAULT NULL,
-  `level` int(3) NULL DEFAULT NULL,
-  `salt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of hg_user_level
+-- Records of hg_user
 -- ----------------------------
-INSERT INTO `hg_user_level` VALUES (1, 1, 3, '123');
+INSERT INTO `hg_user` VALUES (1, 1, '123456');
 
 -- ----------------------------
 -- Table structure for m_user
