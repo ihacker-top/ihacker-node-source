@@ -16,7 +16,7 @@ class Mail {
 
     public function __construct () {
         
-        $this->host = 'hwsmtp.exmail.qq.com';
+        $this->host = 'smtp.exmail.qq.com';
         $this->port = 25;
         $this->username = 'admin@ihacker.top';
         $this->password = 'AAcdQr6fZxeuPcdU';

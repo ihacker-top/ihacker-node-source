@@ -6,18 +6,14 @@ class Game {
 
     public function getUserInfo ($user_id) {
 
-        return Db('hg_user t1')
-            ->join('m_user t2', 't1.user_id=t2.id', 'left')
+        return Db('m_user t1')
             ->field([
-                't2.id',
-                't2.username',
-                't2.password',
-                't2.email',
-                't2.create_time',
-                't1.user_id',
-                't1.salt',
+                'id',
+                'email',
+                'create_time',
+                'salt',
             ])
-            ->where(['t1.user_id' => $user_id])
+            ->where(['id' => $user_id])
             ->find();
     }
 

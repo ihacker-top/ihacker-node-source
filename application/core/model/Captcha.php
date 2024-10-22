@@ -49,6 +49,6 @@ class Captcha {
                 <span>验证码：</span>
                 <span style="background-color:#f33;color:#fff;padding:5px;border-radius:10px;">' . $code . '</span>
             </p>';
-        return $mailObj->send("[安全节点] - 验证码", $body, $email);
+        // return $mailObj->send("[安全节点] - 验证码", $body, $email);
     }
 }

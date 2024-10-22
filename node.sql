@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : 127.0.0.1
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : 127.0.0.1:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 22/10/2024 02:11:56
+ Date: 22/10/2024 17:21:40
 */
 
 SET NAMES utf8mb4;
@@ -60,22 +60,6 @@ INSERT INTO `hg_page` VALUES (5, 5, 'five');
 INSERT INTO `hg_page` VALUES (6, 6, 'six');
 
 -- ----------------------------
--- Table structure for hg_user
--- ----------------------------
-DROP TABLE IF EXISTS `hg_user`;
-CREATE TABLE `hg_user`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NULL DEFAULT NULL,
-  `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of hg_user
--- ----------------------------
-INSERT INTO `hg_user` VALUES (1, 1, '123456');
-
--- ----------------------------
 -- Table structure for m_captcha
 -- ----------------------------
 DROP TABLE IF EXISTS `m_captcha`;
@@ -86,17 +70,14 @@ CREATE TABLE `m_captcha`  (
   `status` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 62 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 98 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of m_captcha
 -- ----------------------------
-INSERT INTO `m_captcha` VALUES (56, 'ihacker.top@hotmail.com', '797810', '0', '2024-10-22 01:47:54');
-INSERT INTO `m_captcha` VALUES (57, 'ihacker.top@hotmail.com', '102146', '0', '2024-10-22 01:58:48');
-INSERT INTO `m_captcha` VALUES (58, 'ihacker.top@hotmail.com', '800279', '0', '2024-10-22 02:00:26');
-INSERT INTO `m_captcha` VALUES (59, 'ihacker.top@hotmail.com', '931983', '0', '2024-10-22 02:01:38');
-INSERT INTO `m_captcha` VALUES (60, 'ihacker.top@hotmail.com', '360864', '0', '2024-10-22 02:06:11');
-INSERT INTO `m_captcha` VALUES (61, 'ihacker.top@hotmail.com', '608296', '0', '2024-10-22 02:09:53');
+INSERT INTO `m_captcha` VALUES (97, 'ihacker.top@hotmail.com', '697299', '0', '2024-10-22 17:17:41');
+INSERT INTO `m_captcha` VALUES (96, 'ihacker.top@hotmail.com', '167268', '0', '2024-10-22 17:08:02');
+INSERT INTO `m_captcha` VALUES (95, 'ihacker.top@hotmail.com', '932479', '0', '2024-10-22 16:38:46');
 
 -- ----------------------------
 -- Table structure for m_user
@@ -104,17 +85,19 @@ INSERT INTO `m_captcha` VALUES (61, 'ihacker.top@hotmail.com', '608296', '0', '2
 DROP TABLE IF EXISTS `m_user`;
 CREATE TABLE `m_user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
+  `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `token_ctime` datetime NULL DEFAULT NULL,
+  `login_ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of m_user
 -- ----------------------------
-INSERT INTO `m_user` VALUES (1, 'ihacker', '123456', 'ihacker.top@hotmail.com', '2024-10-21 00:02:44');
+INSERT INTO `m_user` VALUES (3, 'ihacker.top@hotmail.com', '78bf1d289432feb89a152fd24c7a0e35', '2024-10-22 00:00:00', 'ZiySVJZ646pUIzL/ZqjM/4aP5Qi+IaX8c8X3in91ETVjMnsXQlijr+AAQFqvNnyHYgmSEpxA/DSyehlzJB73ZTeMVpK+AIrpz2NSTNO2MhwNeSbAjLXqOmiMF9geTMbZxp4qCCPjPGnQ8gYH4fVcJvnPitWcLZDJWL2RMHGU4Xrcr+hijto5Irpg38G3odcC', '2024-10-22 17:18:41', '127.0.0.1');
 
 -- ----------------------------
 -- Table structure for rss_conf

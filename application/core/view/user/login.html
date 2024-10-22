@@ -5,15 +5,21 @@
         left: calc(50% - 175px);
         width: 350px;
     }
-    .app p:nth-child(4) {
+    .app p:nth-child(1) {
+        text-align: left;
+        font-size: 14px;
+        color: #aaa;
+    }
+    .app p:nth-child(5) {
         text-align: center;
     }
-    .app p:nth-child(4) input {
+    .app p:nth-child(5) input {
         width: 200px;
     }
     .msg {
         text-align: center;
-        font-size: 16px;
+        font-size: 14px;
+        color: #aaa;
     }
 </style>
 <body>
@@ -21,10 +27,11 @@
         <h1 class="title">登录 or  注册</h1>
         <div class="from">
             <from>
-                <p><span>邮　箱：</span><span><input type="text" name="email" /></span></p>
+                <p>* 本站不保存除邮箱地址外的任何信息，也不会完全公开展示邮箱地址，请放心注册登录使用。</p>
+                <p><span>邮　箱：</span><span><input type="text" name="email" autocomplete="off" /></span></p>
                 <p>
                     <span>验证码：</span><!--
-                    --><span><input type="text" name="code" /></span>&nbsp;<!--
+                    --><span><input type="text" name="code" autocomplete="off" /></span>&nbsp;<!--
                     --><span><span><input type="button" name="sendcode" value="发送" />
                 </p>
                 <p class="msg"></p>
@@ -43,6 +50,9 @@
             $.post($loginUrl, {email: email, code: code}, function (e) {
                 if (e.code === 0) {
                     $('.msg').html(e.message);
+                    setTimeout(function () {
+                        window.location.href = '{:url("hackgame/start/index")}';
+                    }, 1000);
                 }else {
                     $('.msg').html(e.message);
                 }

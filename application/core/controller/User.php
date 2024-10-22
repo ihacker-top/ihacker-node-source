@@ -14,13 +14,16 @@ class User extends Controller {
         $result = ['code' => 0];
         $captchaModel = new \app\core\model\Captcha();
         $userModel = new \app\core\model\User();
+        $userService = new \app\core\service\User();
         $email = input('post.email');
         $code = input('post.code');
         if ($captchaModel->checkCaptcha($email, $code)) {
             $userInfo = $userModel->getUserInfoByEmail($email);
             if (empty($userInfo)) {
-                // $userModel->saveUser($email);
+                $userModel->saveUser($email);
+                $userInfo = $userModel->getUserInfoByEmail($email);
             }
+            $userService->setUserCookie($userInfo);
             $result['message'] = '登陆成功';
         }else {
             $result['code'] = -1;

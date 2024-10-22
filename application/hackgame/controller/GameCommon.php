@@ -17,14 +17,11 @@ class GameCommon extends Common {
         $this->levelInfo = $gameModel->getLevelInfo(1);
         $this->pageInfo = $gameModel->getPageInfo($nowAction);
 
+        
+
         if ((int)$this->pageInfo['level'] > (int)$this->levelInfo[0]['level']) {
             header('Location: ' . url('hackgame/start/' . $this->levelInfo[0]['page']));
             exit;
         }
-        
-        print_r($this->userInfo);
-        print_r($this->levelInfo);
-        print_r($this->pageInfo);
-        
     }
 }
