@@ -4,10 +4,17 @@ namespace app\core\model;
 
 class User {
 
+    // 根据email获取用户记录
     public function getUserInfoByEmail ($email) {
         return Db('m_user')->where(['email' => $email])->find();
     }
 
+    // 根据用户id获取用户记录
+    public function getUserInfoById ($id) {
+        return Db('m_user')->where(['id' => $id])->find();
+    }
+
+    // 保存新用户数据记录
     public function saveUser ($email) {
         $data = [];
         $data['email'] = $email;
@@ -16,6 +23,7 @@ class User {
         return Db('m_user')->data($data)->insert();
     }
 
+    // 根据email更新用户记录
     public function saveTokenByEmail ($email, $token, $tokenCtime, $loginIp) {
         $data = [];
         $data['token'] = $token;

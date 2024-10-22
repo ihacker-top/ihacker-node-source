@@ -2,7 +2,7 @@
 
 namespace app\hackgame\controller;
 
-class Start extends GameCommon {
+class Start extends Common {
 
     public function __construct () {
         parent::__construct();

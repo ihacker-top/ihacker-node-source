@@ -10,20 +10,21 @@ class User extends Controller {
         return $this->fetch();
     }
 
+    // 登录/注册验证接口
     public function gotoLogin () {
         $result = ['code' => 0];
-        $captchaModel = new \app\core\model\Captcha();
-        $userModel = new \app\core\model\User();
-        $userService = new \app\core\service\User();
+        $captchaModel = new \app\core\model\Captcha(); // 验证码类
+        $userModel = new \app\core\model\User(); // 用户数据模块
+        $userService = new \app\core\service\User(); // 用户方法类
         $email = input('post.email');
         $code = input('post.code');
-        if ($captchaModel->checkCaptcha($email, $code)) {
-            $userInfo = $userModel->getUserInfoByEmail($email);
-            if (empty($userInfo)) {
-                $userModel->saveUser($email);
-                $userInfo = $userModel->getUserInfoByEmail($email);
+        if ($captchaModel->checkCaptcha($email, $code)) { // 检查验证码是否正确
+            $userInfo = $userModel->getUserInfoByEmail($email); // 获取用户信息
+            if (empty($userInfo)) { // 判断用户是否存在，如果不存在则注册新用户
+                $userModel->saveUser($email); // 保存用户信息
+                $userInfo = $userModel->getUserInfoByEmail($email); // 获取用户信息
             }
-            $userService->setUserCookie($userInfo);
+            $userService->setUserCookie($userInfo); // 设置登录状态（token）
             $result['message'] = '登陆成功';
         }else {
             $result['code'] = -1;
@@ -34,22 +35,23 @@ class User extends Controller {
 
     public function sendCode () {
         $result = ['code' => 0];
-        $captchaModel = new \app\core\model\Captcha();
-        $userService = new \app\core\service\User();
+        $captchaService = new \app\core\service\Captcha(); // 验证码类
+        $captchaModel = new \app\core\model\Captcha(); // 验证码数据模块
+        $userService = new \app\core\service\User(); // 用户方法类
         $email = input('post.email');
-        if (!$userService->checkEmail($email)) {
+        if (!$userService->checkEmail($email)) { // 检查邮箱格式是否正确
             $result['code'] = 2;
             $result['message'] = '邮箱格式有误';
             return json($result);
         }
-        $sendStatus = $captchaModel->getNewCaptcha60ByEmail($email);
+        $sendStatus = $captchaModel->getNewCaptcha60ByEmail($email); // 获取此邮箱60秒内是否发送过验证码
         if (empty($sendStatus)) {
-            $captchaModel->sendCaptcha($email);
+            $captchaService->sendCaptcha($email);
             $result['message'] = '发送成功，10分钟内有效';
         }else {
-            $time = 60 - (time() - strtotime($sendStatus['create_time']));
+            $time = 60 - (time() - strtotime($sendStatus['create_time'])); // 计算下次发送验证码时间
             $result['code'] = 1;
-            $result['time'] = $time;
+            $result['time'] = $time + 1;
             $result['message'] = '已发送过验证码，请' . $time . '秒后再次发送';
         }
         return json($result);

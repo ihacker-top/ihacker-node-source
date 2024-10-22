@@ -4,19 +4,7 @@ namespace app\hackgame\model;
 
 class Game {
 
-    public function getUserInfo ($user_id) {
-
-        return Db('m_user t1')
-            ->field([
-                'id',
-                'email',
-                'create_time',
-                'salt',
-            ])
-            ->where(['id' => $user_id])
-            ->find();
-    }
-
+    // 获取用户通关列表记录，倒序排列
     public function getLevelInfo ($user_id) {
         
         return Db('hg_level t1')
@@ -33,7 +21,8 @@ class Game {
             ->order('t1.level desc')
             ->select();
     }
-
+ 
+    // 获取当前页面数据记录
     public function getPageInfo ($page) {
         
         return Db('hg_page')

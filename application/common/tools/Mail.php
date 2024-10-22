@@ -29,7 +29,7 @@ class Mail {
         try {
 
             $mail = new PHPMailer(true);
-            // $mail->SMTPDebug  = SMTP::DEBUG_SERVER;
+            // $mail->SMTPDebug  = SMTP::DEBUG_SERVER; // 开启显示输出邮件发送过程
             $mail->isSMTP();
             $mail->CharSet = 'UTF-8';
             $mail->Host = $this->host;
@@ -48,10 +48,10 @@ class Mail {
             ];
     
             $mail->addAddress($toMail, $toNickname);
-            $mail->Subject = $title;
-            $mail->Body = $body;
+            $mail->Subject = $title; // 邮件标题
+            $mail->Body = $body; // 邮件内容
             $mail->isHTML(true);
-            $mail->send();
+            $mail->send(); // 发送邮件
             return true;
         }catch (\Exception $e) {
             
