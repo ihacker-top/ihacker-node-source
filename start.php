@@ -23,6 +23,7 @@ define('MY_DEBUG', true); // 设置DEBUG状态
 define('MY_ROOT_DIR', __DIR__); // 定义项目存放根目录
 define('MY_ROOT_URL', MY_DEBUG ? '/ihacker-node-source' : ''); // 定义资源访问根目录
 define('MY_COOKIE_DOMAIN', MY_DEBUG ? 'localhost' : '.ihacker.top'); // 定义项目cookie有效域
+define('MY_HOME_BASE_URL', MY_DEBUG ? 'http://localhost:3000' : 'https://ihacker.top'); // 定义项目cookie有效域
 
 // 加载基础文件
 require __DIR__ . '/thinkphp/base.php';

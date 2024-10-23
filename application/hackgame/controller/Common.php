@@ -19,7 +19,7 @@ class Common extends Controller {
         $this->userInfo = $userService->checkUserLoginStatus(); // 检查用户登录状态，如果登录则返回用户数据记录，否则返回false
 
         if (!$this->userInfo) { // 判断用户是否登录
-            header('Location: ' . url('core/user/login'));
+            header('Location: ' . MY_HOME_BASE_URL . '/#/login');
             exit;
         }
 
