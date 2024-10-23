@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : 127.0.0.1
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : 127.0.0.1:3306
@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 23/10/2024 00:26:58
+ Date: 23/10/2024 17:11:53
 */
 
 SET NAMES utf8mb4;
@@ -60,22 +60,6 @@ INSERT INTO `hg_page` VALUES (5, 5, 'five');
 INSERT INTO `hg_page` VALUES (6, 6, 'six');
 
 -- ----------------------------
--- Table structure for hg_user
--- ----------------------------
-DROP TABLE IF EXISTS `hg_user`;
-CREATE TABLE `hg_user`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NULL DEFAULT NULL,
-  `salt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of hg_user
--- ----------------------------
-INSERT INTO `hg_user` VALUES (1, 1, '123456');
-
--- ----------------------------
 -- Table structure for m_captcha
 -- ----------------------------
 DROP TABLE IF EXISTS `m_captcha`;
@@ -86,11 +70,28 @@ CREATE TABLE `m_captcha`  (
   `status` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 134 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = MyISAM AUTO_INCREMENT = 151 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of m_captcha
 -- ----------------------------
+INSERT INTO `m_captcha` VALUES (134, 'ihacker.top@hotmail.com', '960907', '0', '2024-10-23 08:33:14');
+INSERT INTO `m_captcha` VALUES (135, 'ihacker.top@hotmail.com', '618673', '0', '2024-10-23 08:34:16');
+INSERT INTO `m_captcha` VALUES (136, 'ihacker.top@hotmail.com', '612052', '0', '2024-10-23 08:35:28');
+INSERT INTO `m_captcha` VALUES (137, 'ihacker.top@hotmail.com', '723195', '0', '2024-10-23 08:48:50');
+INSERT INTO `m_captcha` VALUES (138, 'ihacker.top@hotmail.com', '372135', '0', '2024-10-23 08:49:57');
+INSERT INTO `m_captcha` VALUES (139, 'ihacker.top@hotmail.com', '482206', '0', '2024-10-23 09:27:10');
+INSERT INTO `m_captcha` VALUES (140, 'ihacker.top@hotmail.com', '886789', '0', '2024-10-23 09:51:44');
+INSERT INTO `m_captcha` VALUES (141, 'ihacker.top@hotmail.com', '331142', '0', '2024-10-23 09:59:52');
+INSERT INTO `m_captcha` VALUES (142, 'ihacker.top@hotmail.com', '636083', '0', '2024-10-23 10:10:36');
+INSERT INTO `m_captcha` VALUES (143, 'ihacker.top@hotmail.com', '295463', '0', '2024-10-23 10:13:15');
+INSERT INTO `m_captcha` VALUES (144, 'ihacker.top@hotmail.com', '111591', '0', '2024-10-23 13:43:40');
+INSERT INTO `m_captcha` VALUES (145, 'admin@ihacker.top', '767546', '0', '2024-10-23 14:56:13');
+INSERT INTO `m_captcha` VALUES (146, 'admin@ihacker.top', '319223', '0', '2024-10-23 14:58:12');
+INSERT INTO `m_captcha` VALUES (147, 'admin@ihacker.top', '169633', '0', '2024-10-23 15:13:55');
+INSERT INTO `m_captcha` VALUES (148, 'admin@ihacker.top', '855903', '0', '2024-10-23 15:17:14');
+INSERT INTO `m_captcha` VALUES (149, 'admin@ihacker.top', '956489', '0', '2024-10-23 16:46:49');
+INSERT INTO `m_captcha` VALUES (150, 'admin@ihacker.top', '434847', '0', '2024-10-23 17:02:42');
 
 -- ----------------------------
 -- Table structure for m_user
@@ -110,8 +111,8 @@ CREATE TABLE `m_user`  (
 -- ----------------------------
 -- Records of m_user
 -- ----------------------------
-INSERT INTO `m_user` VALUES (3, 'ihacker.top@hotmail.com', '78bf1d289432feb89a152fd24c7a0e35', '2024-10-22 00:00:00', 'Wml5U1ZKWjY0NnBVSXpML1pxak0vNGFQNVFpK0lhWDhjOFgzaW45MUVUWHI0c09qclNEUE5mRndEd3FocXBycDdBL2tkaGpDT0JEYmhKTlJOcWlmUWo3Uzl5cmU4SFYxbzNHZnA1QVV1VExIaGJWZTBJbW1mT0I5dnVUREZXa1hLN2phTFdHTmxPTEVaK1E2emord3pIUlpMR3dvNmE3enFPOWt0R2JZWVVUSXVENnVpMWhVaDFvbmdBaHpzOEdUeHFCRmd2aUo5VEJaN25EdnF0UHkzbjgvcmVhTHhhaEYvNDQzNVBiMHZabEtoY1M0VDQ1V2xpUG9IUDcxUXVyMg==', '2024-10-23 00:25:04', '127.0.0.1');
-INSERT INTO `m_user` VALUES (4, 'admin@ihacker.top', 'f47df370a95a4a5a265ca00059a1ec4e', '2024-10-22 00:00:00', 'WegbLNqZwNPhQOL09CBUWmUsgxAktRzlWMEp0w+AHc1KQ7TYNw5mgNdlOsSOoSB4yH1KdXkuZppAC5jozNx7Sccr6eO7WNSNTJJ/rcgJY9/M82ctWpckeVBgB/f+AsaUrPI5faZ8yveeW/WmTugak6ng8hGXJ/bzYe/krjuc5yCTbwZuC27KY9+FGHo3XxN8', '2024-10-22 22:02:15', '127.0.0.1');
+INSERT INTO `m_user` VALUES (3, 'ihacker.top@hotmail.com', '78bf1d289432feb89a152fd24c7a0e35', '2024-10-22 00:00:00', 'ZiySVJZ646pUIzL/ZqjM/4aP5Qi+IaX8c8X3in91ETXr4sOjrSDPNfFwDwqhqprp7A/kdhjCOBDbhJNRNqifQj7S9yre8HV1o3Gfp5AUuTLHhbVe0ImmfOB9vuTDFWkXK7jaLWGNlOLEZ+Q6zj+wzHRZLGwo6a7zqO9ktGbYYUTIuD6ui1hUh1ongAhzs8GTxqBFgviJ9TBZ7nDvqtPy3slvJtvOeRZM/Z1lb2+RUaZJSmTh1T/DWpDrq/OQHKc+', '2024-10-23 13:43:52', '127.0.0.1');
+INSERT INTO `m_user` VALUES (4, 'admin@ihacker.top', 'f47df370a95a4a5a265ca00059a1ec4e', '2024-10-22 00:00:00', 'WegbLNqZwNPhQOL09CBUWmUsgxAktRzlWMEp0w+AHc1/KrSMK+ZMhDzYAlTGx5z8A2VaLLWv16HvSaVObCJ20T7/Cut17XcDBMI8As4TAmGyX1Vfm/jn8DXzHtkn0weRg1TxZxtdmnNomK+2MZ84aei6zP8mUp9jiIqHo4UfrZ2Tbp6Ms3jKCT8jJnGSh2ixO1t+KWyWDkIg/JCVl5wZhnwrBlIINxK1+5WfXbDKpTQ=', '2024-10-23 17:02:49', '::1');
 
 -- ----------------------------
 -- Table structure for rss_conf

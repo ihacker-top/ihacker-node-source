@@ -10,6 +10,31 @@ class User extends Controller {
         return $this->fetch();
     }
 
+    // 第三方登录接口
+    public function apiLogin () {
+        $result = ['code' => 0];
+        $captchaModel = new \app\core\model\Captcha(); // 验证码类
+        $userModel = new \app\core\model\User(); // 用户数据模块
+        $userService = new \app\core\service\User(); // 用户方法类
+        $email = input('post.email');
+        $code = input('post.code');
+        if ($captchaModel->checkCaptcha($email, $code)) { // 检查验证码是否正确
+            $userInfo = $userModel->getUserInfoByEmail($email); // 获取用户信息
+            if (empty($userInfo)) { // 判断用户是否存在，如果不存在则注册新用户
+                $userModel->saveUser($email); // 保存用户信息
+                $userInfo = $userModel->getUserInfoByEmail($email); // 获取用户信息
+            }
+            $token = $userService->generAndSaveToken($userInfo); // 生成用户登录token
+            $result['token'] = $token;
+            $result['domain'] = MY_DOMAIN;
+            $result['message'] = '登陆成功';
+        }else {
+            $result['code'] = -1;
+            $result['message'] = '验证码有误';
+        }
+        return json($result);
+    }
+
     // 登录/注册验证接口
     public function gotoLogin () {
         $result = ['code' => 0];
