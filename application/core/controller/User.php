@@ -6,6 +6,7 @@ use think\Controller;
 
 class User extends Controller {
 
+    // 登录页面
     public function login () {
         return $this->fetch();
     }
@@ -26,7 +27,8 @@ class User extends Controller {
             }
             $token = $userService->generAndSaveToken($userInfo); // 生成用户登录token
             $result['token'] = $token;
-            $result['domain'] = MY_DOMAIN;
+            $result['domain'] = MY_COOKIE_DOMAIN;
+            $result['email'] = $userInfo['email'];
             $result['message'] = '登陆成功';
         }else {
             $result['code'] = -1;

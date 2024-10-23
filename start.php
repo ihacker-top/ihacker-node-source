@@ -22,7 +22,7 @@ define('APP_PATH', __DIR__ . '/application/');
 define('MY_DEBUG', true); // 设置DEBUG状态
 define('MY_ROOT_DIR', __DIR__); // 定义项目存放根目录
 define('MY_ROOT_URL', MY_DEBUG ? '/ihacker-node-source' : ''); // 定义资源访问根目录
-define('MY_DOMAIN', MY_DEBUG ? 'localhost' : '.ihacker.top'); // 定义项目域名
+define('MY_COOKIE_DOMAIN', MY_DEBUG ? 'localhost' : '.ihacker.top'); // 定义项目cookie有效域
 
 // 加载基础文件
 require __DIR__ . '/thinkphp/base.php';

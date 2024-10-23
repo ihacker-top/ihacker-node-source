@@ -14,6 +14,11 @@ class User {
         return Db('m_user')->where(['id' => $id])->find();
     }
 
+    // 根据token获取用户记录
+    public function getUserInfoByToken ($token) {
+        return Db('m_user')->where(['token' => $token])->find();
+    }
+
     // 保存新用户数据记录
     public function saveUser ($email) {
         $data = [];

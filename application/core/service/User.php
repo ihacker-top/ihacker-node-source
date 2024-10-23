@@ -28,7 +28,7 @@ class User {
             if (!$token) {
                 return false;
             }
-            setcookie('token', $token, time() + 3600 * 24 * 30, '/', MY_DOMAIN); // 设置登录状态（token）
+            setcookie('token', $token, time() + 3600 * 24 * 30, '/', MY_COOKIE_DOMAIN); // 设置登录状态（token）
             return $token;
         }catch (\Exception $e) {
             \think\facade\Log::record($e->getMessage());
