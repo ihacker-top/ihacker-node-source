@@ -35,4 +35,15 @@ class Common extends Controller {
             exit;
         }
     }
+
+    private function checkFlag ($flag = '') {
+
+        if (input('post.flag')) {
+
+        }
+    }
+
+    private function nextLevel () {
+        
+    }
 }
