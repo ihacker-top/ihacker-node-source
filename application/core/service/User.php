@@ -20,22 +20,6 @@ class User {
         }
     }
 
-    // 设置用户在线状态方法（token）
-    public function setUserCookie ($userInfo) {
-
-        try {
-            $token = $this->generAndSaveToken($userInfo);
-            if (!$token) {
-                return false;
-            }
-            setcookie('token', $token, time() + 3600 * 24 * 30, '/', MY_COOKIE_DOMAIN); // 设置登录状态（token）
-            return $token;
-        }catch (\Exception $e) {
-            \think\facade\Log::record($e->getMessage());
-            return false;
-        }
-    }
-
     // 生成token并保存到数据库
     public function generAndSaveToken ($userInfo) {
         

@@ -19,7 +19,7 @@ return [
     // 用户名
     'username'        => MY_DEBUG ? 'root' : '3miyhtk29i222',
     // 密码
-    'password'        => MY_DEBUG ? 'root' : 'Xinguan2020',
+    'password'        => MY_DEBUG ? 'root' : 'Maoxianzhe2000',
     // 端口
     'hostport'        => '',
     // 连接dsn

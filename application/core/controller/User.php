@@ -6,11 +6,6 @@ use think\Controller;
 
 class User extends Controller {
 
-    // 登录页面
-    public function login () {
-        return $this->fetch();
-    }
-
     // 第三方登录接口
     public function apiLogin () {
         $result = ['code' => 0];
